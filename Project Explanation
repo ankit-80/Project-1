@@ -1,0 +1,2 @@
+“I automated AWS infrastructure provisioning using Terraform integrated with Jenkins CI/CD.
+Whenever code is pushed to GitHub, Jenkins pipeline triggers terraform init, plan and after manual approval, apply creates resources like VPC, EC2, RDS automatically. Terraform state is stored remotely in S3 with DynamoDB state locking to avoid conflicts.”
