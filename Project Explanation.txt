@@ -4,6 +4,20 @@ Project: Terraform Automation using Jenkins (AWS Infrastructure)
 •	Terraform
 •	Jenkins
 •	GitHub
+
+- First clone repo to local machine 
+- Then run terraform apply cmd  only Jenkins_server_creation folder
+- it will create ec2, vpc, s3, i.e infrasturcre manually 
+- then use launched ec2 i.e jenkins server 
+-on genkins server 
+ - use jenkinsfile to write pipeline 
+ - then add git repo 
+ - add paramerised project 
+ - 
+ 
+
+
+
 ________________________________________
 🖥️ Phase 1: Steps Performed on Local Machine
 These steps are executed initially to bootstrap the infrastructure.
