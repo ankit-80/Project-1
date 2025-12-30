@@ -1,2 +1,66 @@
-“I automated AWS infrastructure provisioning using Terraform integrated with Jenkins CI/CD.
-Whenever code is pushed to GitHub, Jenkins pipeline triggers terraform init, plan and after manual approval, apply creates resources like VPC, EC2, RDS automatically. Terraform state is stored remotely in S3 with DynamoDB state locking to avoid conflicts.”
+Project: Terraform Automation using Jenkins (AWS Infrastructure)
+🔧 Tools & Technologies
+•	AWS
+•	Terraform
+•	Jenkins
+•	GitHub
+________________________________________
+🖥️ Phase 1: Steps Performed on Local Machine
+These steps are executed initially to bootstrap the infrastructure.
+1.	Created an S3 Bucket
+o	Used as a remote backend for storing the Terraform state file (terraform.tfstate).
+2.	Created AWS VPC using Terraform
+o	Defined CIDR block, subnets, route tables, Internet Gateway, etc.
+3.	Created EC2 Instance inside the VPC
+o	EC2 instance hosts:
+	Jenkins
+	Terraform
+o	Security groups configured for SSH (22) and Jenkins (8080).
+4.	Applied Terraform Code (Initial Apply)
+o	Infrastructure created without backend configuration (local state).
+5.	Configured Terraform Backend
+o	Added S3 backend configuration in backend.tf.
+6.	Re-initialized and Applied Terraform
+o	Ran terraform init -reconfigure
+o	Migrated state from local to S3 backend.
+________________________________________
+⚙️ Phase 2: Steps Performed on Jenkins Server
+These steps automate Terraform using Jenkins CI/CD.
+1.	Installed Required Tools on Jenkins Server
+o	Terraform
+o	AWS CLI
+o	Git
+o	Java (for Jenkins)
+2.	Configured Jenkins
+o	Added AWS credentials (Access Key & Secret Key) /or add ec2 role to ec2 machine
+o	Installed required plugins (Git, Pipeline)
+3.	Created Jenkinsfile (Pipeline as Code)
+o	Defined stages:
+	Checkout
+	Terraform Init
+	Terraform Plan / Apply / Destroy
+4.	Integrated GitHub Repository
+o	Jenkins pulls Terraform code from GitHub using SCM.
+5.	Parameterized the Jenkins Pipeline
+o	Added choice parameter:
+	plan
+	apply
+	destroy
+6.	Automated Terraform Execution
+o	Based on selected parameter:
+	terraform plan
+	terraform apply -auto-approve
+	terraform destroy -auto-approve
+________________________________________
+🔁 End-to-End Flow
+1.	Developer pushes Terraform code to GitHub
+2.	Jenkins pulls the latest code
+3.	Jenkins runs Terraform commands automatically
+4.	Infrastructure is planned, created, or destroyed in AWS
+________________________________________
+📌 Key Highlights (For Interview)
+•	Used remote backend (S3) for state management
+•	Implemented parameterized Jenkins pipeline
+•	Followed Infrastructure as Code (IaC) principles
+•	Fully automated AWS infrastructure provisioning
+
