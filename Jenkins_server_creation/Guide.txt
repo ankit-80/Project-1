@@ -1,0 +1,19 @@
+
+This steps is performed on local machine
+
+this code is to create AWS Infrastructure using terraform Automation :
+1.Create vpc
+2.Created EC2 Instance using VPC that contains Jenkins & Terraform  
+3.Created s3 bucket fist 
+3.then apply the code 
+4.then created backend for this Infrastructure
+5 apply the code 
+
+-------------------------------------------------------------------------------
+This steps are performed on Jenkins server
+
+ 
+1.Created Jenkinsfile to automate build 
+2.passes github repo link to take terraform code 
+3.this project is parameterised - plan ,apply,destroy
+
